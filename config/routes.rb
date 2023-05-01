@@ -6,4 +6,6 @@ get("/users/:path_username", {:controller => "users", :action=> "show"})
 
 get("/photos", {:controller=> "photos", :action=>"index"})
 
+get("/photos/:path_photo", {:controller=>"photos", :action=>"show"})
+
 end
