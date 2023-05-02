@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
     newest_user = User.new
     newest_user.username = new_username
-    newest_user.id = User.all.last.id + 1
+    #newest_user.id = User.all.last.id + 1 #dont do this
 
     newest_user.save
 
@@ -43,27 +43,27 @@ class UsersController < ApplicationController
       next_url = "/users/" + newest_user.username
       redirect_to(next_url)
     end
+  end
 
     def update
 
       #/updated_username?new_username=binnues607
 
-      url_username = params.fetch("updated_username")
+      new_username = params.fetch("new_username")
+      new_username_id = params.fetch("user_id")
 
-      matching_usernames = User.where({ :username => url_username })
+      matching_users = User.where({ :id => new_username_id })
 
-      @the_user = matching_usernames.at(0)
+      @the_user = matching_users.at(0)
 
-      input_new_username = params.fetch("new_username")
+      @the_user.username = new_username
 
-      the_user.username = input_new_username
-
-      the_user.save
+      @the_user.save
 
       #render({:template=> "user_templates/update.html.erb"})
 
-      next_url = "/users/" + the_user.username
+      next_url = "/users/" + @the_user.username
       redirect_to(next_url)
     end
-  end
+  
 end
