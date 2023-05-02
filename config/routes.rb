@@ -19,7 +19,7 @@ get("/insert_comment_record/:new_comment", {:controller=>"photos", :action=>"add
 
 get("/insert_user_record", {:controller=>"users", :action=>"create"})
 
-get("/updated_username", {:controller=>"users", :action=>"update"})
+get("/updated_username/:", {:controller=>"users", :action=>"update"})
 
 get("/", {:controller=> "users", :action=> "index"})
 
