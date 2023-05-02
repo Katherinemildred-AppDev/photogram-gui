@@ -52,6 +52,13 @@ class UsersController < ApplicationController
 
     end
     
+    def update
+  
+      render({:template=> "user_templates/update.html.erb"})
+
+    end
+
+
 
   end
 
