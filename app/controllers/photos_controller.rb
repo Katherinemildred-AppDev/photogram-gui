@@ -81,5 +81,27 @@ class PhotosController < ApplicationController
 
   end
 
+  def add_comment
+    the_id = params.fetch("new_comment")
+    matching_photos = Photo.where({:id=> the_id})
+    @the_photo = matching_photos.at(0)
+
+    input_image =params.fetch("input_photo_id")
+    input_user_id = params.fetch("input_author_id")
+    input_user_comment = params.fetch("input_body")
+
+
+    a_new_comment = Comment.new
+    a_new_comment.author_id= input_user_id
+    a_new_comment.body = input_user_comment
+    a_new_comment.photo_id = @the_photo.id
+    
+    a_new_comment.save
+
+    next_url = "/photos/" +@the_photo.id.to_s
+    redirect_to(next_url)
+   
+  end
+
 
 end

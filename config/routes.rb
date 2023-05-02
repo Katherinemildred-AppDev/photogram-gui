@@ -14,4 +14,6 @@ get("/insert_photo", {:controller=>"photos", :action=>"create"})
 
 get("/update_photo/:path_modify", {:controller=>"photos", :action=>"update"})
 
+get("//insert_comment_record/:new_comment", {:controller=>"photos", :action=>"add_comment"})
+
 end
